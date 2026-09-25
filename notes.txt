@@ -1,0 +1,1 @@
+criar ambiente virtual para utilzar o open mpi
