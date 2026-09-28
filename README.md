@@ -160,7 +160,7 @@ Para salvar alterações no repositório:
 
 ```bash
 git status
-git add .
+git add vetor.c
 git commit -m "Descrição da alteração"
 git push
 ```

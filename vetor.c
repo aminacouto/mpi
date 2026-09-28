@@ -1,45 +1,115 @@
-#define TAREFAS 7 // Numero de tarefas no saco de trabalho para np = 8, processo 0 é o mestre
+#include <stdio.h>
+#include <mpi.h>
 
-int my_rank;       // Identificador deste processo
-int proc_n;        // Numero de processos disparados pelo usuário na linha de comando (np)
-int message;       // Buffer para as mensagens
-int saco[TAREFAS]; // saco de trabalho
+#define TAREFAS 3
+#define ARRAY_SIZE 10
 
-MPI_Init(); // funcao que inicializa o MPI, todo o código paralelo esta abaixo
-
-my_rank = MPI_Comm_rank(); // pega pega o numero do processo atual (rank)
-proc_n = MPI_Comm_size();  // pega informação do numero de processos (quantidade total)
-
-if (my_rank == 0) // qual o meu papel: sou o mestre ou um dos escravos?
+void bs(int n, int *vetor)
 {
-   // papel do mestre
+    int c = 0;
+    int d;
+    int troca;
+    int trocou = 1;
 
-   for (i = 0; i < TAREFAS; i++) // mando o trabalho para os escravos fazerem
-   {
-      message = saco[i];
-      MPI_Send(&message, i + 1); // envio trabalho saco[i] para escravo com id = i+1;
-   }
+    while (c < (n - 1) && trocou)
+    {
+        trocou = 0;
 
-   // recebo o resultado
+        for (d = 0; d < n - c - 1; d++)
+        {
+            if (vetor[d] > vetor[d + 1])
+            {
+                troca = vetor[d];
+                vetor[d] = vetor[d + 1];
+                vetor[d + 1] = troca;
+                trocou = 1;
+            }
+        }
 
-   for (i = 0; i < TAREFAS; i++)
-   {
-      // recebo mensagens de qualquer emissor e com qualquer etiqueta (TAG)
-
-      MPI_Recv(&message, MPI_ANY_SOURCE, MPI_ANY_TAG, status); // recebo por ordem de chegada com any_source
-
-      saco[status.MPI_SOURCE - 1] = message; // coloco mensagem no saco na posição do escravo emissor
-   }
-}
-else
-{
-   // papel do escravo
-
-   MPI_Recv(&message, 0); // recebo do mestre
-
-   message = message + 1; // icremento conteúdo da mensagem
-
-   MPI_Send(&message, 0); // retorno resultado para o mestre
+        c++;
+    }
 }
 
-MPI_Finalize();
+int main(int argc, char *argv[])
+{
+    int my_rank;
+    int proc_n;
+    int saco[TAREFAS][ARRAY_SIZE];
+    int message[ARRAY_SIZE];
+    int i, j;
+
+    MPI_Status status;
+
+    MPI_Init(&argc, &argv);
+
+    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
+
+    if (my_rank == 0)
+    {
+        for (i = 0; i < TAREFAS; i++)
+        {
+            for (j = 0; j < ARRAY_SIZE; j++)
+            {
+                saco[i][j] = ARRAY_SIZE - j + (i * ARRAY_SIZE);
+            }
+        }
+
+        for (i = 0; i < TAREFAS; i++)
+        {
+            printf("Mestre enviando tarefa %d para escravo %d\n",
+                   i, i + 1);
+
+            MPI_Send(saco[i],
+                     ARRAY_SIZE,
+                     MPI_INT,
+                     i + 1,
+                     0,
+                     MPI_COMM_WORLD);
+        }
+
+        for (i = 0; i < TAREFAS; i++)
+        {
+            MPI_Recv(message,
+                     ARRAY_SIZE,
+                     MPI_INT,
+                     MPI_ANY_SOURCE,
+                     MPI_ANY_TAG,
+                     MPI_COMM_WORLD,
+                     &status);
+
+            printf("Mestre recebeu do escravo %d: ",
+                   status.MPI_SOURCE);
+
+            for (j = 0; j < ARRAY_SIZE; j++)
+            {
+                printf("%d ", message[j]);
+            }
+
+            printf("\n");
+        }
+    }
+    else
+    {
+        MPI_Recv(message,
+                 ARRAY_SIZE,
+                 MPI_INT,
+                 0,
+                 MPI_ANY_TAG,
+                 MPI_COMM_WORLD,
+                 &status);
+
+        bs(ARRAY_SIZE, message);
+
+        MPI_Send(message,
+                 ARRAY_SIZE,
+                 MPI_INT,
+                 0,
+                 0,
+                 MPI_COMM_WORLD);
+    }
+
+    MPI_Finalize();
+
+    return 0;
+}
