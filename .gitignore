@@ -1,0 +1,14 @@
+# Executaveis gerados pela compilacao
+/a.out
+/hello_mpi
+/master_worker
+/master_worker_basic
+/master_worker_dynamic
+/tri_simple
+/tri_saco
+/tri_saco_mpi
+/exercices/a.out
+/exercices/hello_mpi
+/exercices/master_worker
+/exercices/master_worker_basic
+/exercices/master_worker_dynamic
