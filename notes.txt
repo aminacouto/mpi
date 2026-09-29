@@ -1,1 +1,35 @@
-criar ambiente virtual para utilzar o open mpi
+# Status atual: 
+- O mestre gerencia um saco contendo múltiplos vetores
+- Os escravos solicitam tarefas conforme ficam disponíveis. 
+- Cada escravo recebe um vetor, executa a ordenação com Bubble Sort e retorna o resultado ao mestre
+- O mestre armazena na posição correspondente do saco. 
+
+- Tags para pedido de trabalho, envio de tarefa, retorno de resultado e encerramento dos escravos. 
+
+- Utilização MPI_ANY_SOURCE para permitir o atendimento das solicitações conforme a ordem de chegada.
+
+# Pontos para verificar:
+A execução é muito rápida, mesmo com ARRAY_SIZE = 10000
+
+# Próximos passos:
+
+- Implementar a versão sequencial para servir como referência.
+
+- Adicionar medição do tempo de execução:
+   - tempo sequencial;
+   - tempo paralelo.
+
+- Testar os tamanhos indicados no enunciado:
+   - 10.000
+   - 100.000
+   - 1.000.000 
+
+- Executar a versão paralela com diferentes números de processos.
+
+- Realizar os testes de desempenho no cluster Atlântica utilizando 2 nós exclusivos.
+
+Coletar os tempos de execução.
+
+- Calcular Speedup e eficiência.
+
+- Analisar o balanceamento de carga entre os escravos.
