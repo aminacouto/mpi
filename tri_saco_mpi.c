@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <mpi.h>
+
 #define TAREFAS 3
-#define  ARRAY_SIZE 4
+#define  ARRAY_SIZE 10
 
 #define REQUEST 1
 #define TASK    2
@@ -62,11 +63,17 @@ int main(int argc, char *argv[])
 
     if (my_rank == 0)
     {
-        int saco[TAREFAS][ARRAY_SIZE] = {
-            {5, 3, 4, 1},
-            {9, 2, 7, 6},
-            {8, 4, 2, 3}
-        };
+        int saco[TAREFAS][ARRAY_SIZE];
+
+/* Gera cada vetor em ordem decrescente. */
+for (int tarefa = 0; tarefa < TAREFAS; tarefa++)
+{
+    for (int elemento = 0; elemento < ARRAY_SIZE; elemento++)
+    {
+        saco[tarefa][elemento] =
+            ARRAY_SIZE - elemento + tarefa * ARRAY_SIZE;
+    }
+}
 
         int next_task = 0;
         int active_workers = proc_n - 1;
