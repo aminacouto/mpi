@@ -17,7 +17,7 @@ A execução é muito rápida, mesmo com ARRAY_SIZE = 10000
 
 - Adicionar medição do tempo de execução:
    - tempo sequencial;
-   - tempo paralelo.
+   - tempo paralelo. ok
 
 - Testar os tamanhos indicados no enunciado:
    - 10.000

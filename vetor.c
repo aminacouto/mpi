@@ -43,6 +43,8 @@ int main(int argc, char *argv[])
 {
     int my_rank;
     int proc_n;
+    double tempo_inicio;
+    double tempo_fim;
 
     // Saco de trabalho
     int saco[TAREFAS][ARRAY_SIZE];
@@ -79,6 +81,9 @@ int main(int argc, char *argv[])
     // Descobre quantos processos existem
     MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
+    // Sincroniza os processos e inicia a medição do processamento.
+    MPI_Barrier(MPI_COMM_WORLD);
+    tempo_inicio = MPI_Wtime();
 
     // =====================================================
     // MESTRE
@@ -281,6 +286,16 @@ int main(int argc, char *argv[])
         }
     }
 
+
+    // Aguarda todos os processos concluírem antes de encerrar a medição.
+    MPI_Barrier(MPI_COMM_WORLD);
+    tempo_fim = MPI_Wtime();
+
+    if (my_rank == 0)
+    {
+        printf("\nTempo total do processamento paralelo: %.6f segundos\n",
+               tempo_fim - tempo_inicio);
+    }
 
     // Finaliza o MPI
     MPI_Finalize();
