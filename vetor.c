@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
 
 
             // Guarda quem enviou a mensagem
-            int escravo = status.MPI_SOURCE;
+            int escravo = status.MPI_SOURCE; // guardar a tag no proprio vetor ou no saco, não em uma variavel, para manter a ordem do saco
 
 
             // =============================================
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
                 {
                     tarefa_id = proxima_tarefa;
 
-                    // Envia o identificador da tarefa
+                    // Envia o identificador da tarefa - não é necessário enviar o vetor inteiro, apenas o identificador
                     MPI_Send(&tarefa_id,
                              1,
                              MPI_INT,
@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
     {
         while (1)
         {
-            printf("Escravo %d solicitando tarefa\n", my_rank);
+           // printf("Escravo %d solicitando tarefa\n", my_rank);
             // Solicita uma tarefa ao mestre
             MPI_Send(&pedido,
                      1,
@@ -253,9 +253,9 @@ int main(int argc, char *argv[])
                      &status);
 
 
-            printf("Escravo %d recebeu tarefa %d\n",
-                   my_rank,
-                   tarefa_id);
+            //printf("Escravo %d recebeu tarefa %d\n",
+            //       my_rank,
+            //       tarefa_id);
 
 
             // Ordena o vetor

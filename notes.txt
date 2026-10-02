@@ -28,8 +28,16 @@ A execução é muito rápida, mesmo com ARRAY_SIZE = 10000
 
 - Realizar os testes de desempenho no cluster Atlântica utilizando 2 nós exclusivos.
 
-Coletar os tempos de execução.
+- Coletar os tempos de execução.
 
 - Calcular Speedup e eficiência.
 
 - Analisar o balanceamento de carga entre os escravos.
+
+
+
+!!!!!!!
+
+manter essa versão dos escravos solicitando as tarefas desde o início
+
+Nova versão: mestre manda uma rajada inicial de tarefas para os escravos, escravos vão solicitando novas tarefas conforme forem concluindo
