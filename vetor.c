@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 {
     int my_rank;
     int proc_n;
+
     double tempo_inicio;
     double tempo_fim;
 
@@ -63,9 +64,6 @@ int main(int argc, char *argv[])
     // Número de escravos que já receberam TAG_FIM
     int escravos_finalizados = 0;
 
-    // Identificador da tarefa
-    int tarefa_id;
-
     // Variável usada apenas para solicitar trabalho
     int pedido = 1;
 
@@ -81,8 +79,13 @@ int main(int argc, char *argv[])
     // Descobre quantos processos existem
     MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
-    // Sincroniza os processos e inicia a medição do processamento.
+
+    // Cada posição guarda qual tarefa está sendo executada
+    int tarefa_do_escravo[proc_n];
+
+    // Sincroniza todos os processos antes da medição
     MPI_Barrier(MPI_COMM_WORLD);
+
     tempo_inicio = MPI_Wtime();
 
     // =====================================================
@@ -100,12 +103,13 @@ int main(int argc, char *argv[])
             }
         }
 
-        // Distribuição dinâmica
+
+        // Distribuição dinâmica das tarefas
         while (escravos_finalizados < proc_n - 1)
         {
-            // Recebe uma mensagem de qualquer escravo
-            MPI_Recv(&tarefa_id,
-                     1,
+            // O mestre recebe uma mensagem de qualquer escravo.
+            MPI_Recv(message,
+                     ARRAY_SIZE,
                      MPI_INT,
                      MPI_ANY_SOURCE,
                      MPI_ANY_TAG,
@@ -113,8 +117,8 @@ int main(int argc, char *argv[])
                      &status);
 
 
-            // Guarda quem enviou a mensagem
-            int escravo = status.MPI_SOURCE; // guardar a tag no proprio vetor ou no saco, não em uma variavel, para manter a ordem do saco
+            // Identifica qual escravo enviou a mensagem
+            int escravo = status.MPI_SOURCE;
 
 
             // =============================================
@@ -123,21 +127,14 @@ int main(int argc, char *argv[])
 
             if (status.MPI_TAG == TAG_PEDIDO)
             {
-                // Ainda existe trabalho no saco
+                // Ainda existem tarefas no saco
                 if (proxima_tarefa < TAREFAS)
                 {
-                    tarefa_id = proxima_tarefa;
+                    // Registra qual tarefa será executada por este escravo
+                    tarefa_do_escravo[escravo] = proxima_tarefa;
 
-                    // Envia o identificador da tarefa - não é necessário enviar o vetor inteiro, apenas o identificador
-                    MPI_Send(&tarefa_id,
-                             1,
-                             MPI_INT,
-                             escravo,
-                             TAG_TRABALHO,
-                             MPI_COMM_WORLD);
-
-                    // Envia o vetor
-                    MPI_Send(saco[tarefa_id],
+                    // Envia somente o vetor 
+                    MPI_Send(saco[proxima_tarefa],
                              ARRAY_SIZE,
                              MPI_INT,
                              escravo,
@@ -145,7 +142,7 @@ int main(int argc, char *argv[])
                              MPI_COMM_WORLD);
 
                     printf("Mestre enviou tarefa %d para escravo %d\n",
-                           tarefa_id,
+                           proxima_tarefa,
                            escravo);
 
                     proxima_tarefa++;
@@ -154,7 +151,8 @@ int main(int argc, char *argv[])
                 // Não existem mais tarefas para distribuir
                 else
                 {
-                    MPI_Send(&tarefa_id,
+                    // Envia mensagem de término.
+                    MPI_Send(message,
                              1,
                              MPI_INT,
                              escravo,
@@ -172,16 +170,10 @@ int main(int argc, char *argv[])
 
             else if (status.MPI_TAG == TAG_RESULTADO)
             {
-                // Recebe o vetor ordenado
-                MPI_Recv(message,
-                         ARRAY_SIZE,
-                         MPI_INT,
-                         escravo,
-                         TAG_RESULTADO,
-                         MPI_COMM_WORLD,
-                         &status);
+                // Descobre qual tarefa estava sendo executada por esse escravo
+                int tarefa_id = tarefa_do_escravo[escravo];
 
-                // Guarda o resultado na posição correta do saco de trabalho
+                // Guarda o vetor recebido na posição original correspondente dentro do saco
                 for (j = 0; j < ARRAY_SIZE; j++)
                 {
                     saco[tarefa_id][j] = message[j];
@@ -195,21 +187,9 @@ int main(int argc, char *argv[])
             }
         }
 
-        printf("\nTarefas concluídas: %d de %d\n", tarefas_concluidas, TAREFAS);
-        // Mostra o saco depois de todas as tarefas, para array size pequeno
-        //printf("\nSaco final:\n");
-
-        //for (i = 0; i < TAREFAS; i++)
-        //{
-            //printf("Tarefa %d: ", i);
-
-           // for (j = 0; j < ARRAY_SIZE; j++)
-           // {
-               // printf("%d ", saco[i][j]);
-           // }
-
-           // printf("\n");
-       // }
+        printf("\nTarefas concluídas: %d de %d\n",
+               tarefas_concluidas,
+               TAREFAS);
     }
 
 
@@ -221,7 +201,6 @@ int main(int argc, char *argv[])
     {
         while (1)
         {
-           // printf("Escravo %d solicitando tarefa\n", my_rank);
             // Solicita uma tarefa ao mestre
             MPI_Send(&pedido,
                      1,
@@ -231,9 +210,9 @@ int main(int argc, char *argv[])
                      MPI_COMM_WORLD);
 
 
-            // Espera a resposta do mestre
-            MPI_Recv(&tarefa_id,
-                     1,
+            // Recebe uma resposta do mestre.
+            MPI_Recv(message,
+                     ARRAY_SIZE,
                      MPI_INT,
                      0,
                      MPI_ANY_TAG,
@@ -247,36 +226,10 @@ int main(int argc, char *argv[])
                 break;
             }
 
-
-            // Recebe o vetor que deve ordenar
-            MPI_Recv(message,
-                     ARRAY_SIZE,
-                     MPI_INT,
-                     0,
-                     TAG_TRABALHO,
-                     MPI_COMM_WORLD,
-                     &status);
-
-
-            //printf("Escravo %d recebeu tarefa %d\n",
-            //       my_rank,
-            //       tarefa_id);
-
-
-            // Ordena o vetor
+            // Ordena o vetor recebido
             bs(ARRAY_SIZE, message);
 
-
-            // Envia o identificador da tarefa concluída
-            MPI_Send(&tarefa_id,
-                     1,
-                     MPI_INT,
-                     0,
-                     TAG_RESULTADO,
-                     MPI_COMM_WORLD);
-
-
-            // Envia o vetor ordenado
+            // Devolve o vetor ordenado ao mestre
             MPI_Send(message,
                      ARRAY_SIZE,
                      MPI_INT,
@@ -287,13 +240,15 @@ int main(int argc, char *argv[])
     }
 
 
-    // Aguarda todos os processos concluírem antes de encerrar a medição.
+    // Aguarda todos os processos concluírem antes de finalizar a medição
     MPI_Barrier(MPI_COMM_WORLD);
+
     tempo_fim = MPI_Wtime();
 
+    // Mestre mostra o tempo total
     if (my_rank == 0)
     {
-        printf("\nTempo total do processamento paralelo: %.6f segundos\n",
+        printf("Tempo total do processamento paralelo: %.6f segundos\n",
                tempo_fim - tempo_inicio);
     }
 
