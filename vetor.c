@@ -1,3 +1,5 @@
+// Versão 1: escravos solicitam trabalho ao mestre, que distribui dinamicamente as tarefas.
+
 #include <stdio.h>
 #include <mpi.h>
 

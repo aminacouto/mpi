@@ -1,4 +1,4 @@
-# Status atual: 
+# Status atual versão paralela: 
 - O mestre gerencia um saco contendo múltiplos vetores
 - Os escravos solicitam tarefas conforme ficam disponíveis. 
 - Cada escravo recebe um vetor, executa a ordenação com Bubble Sort e retorna o resultado ao mestre
@@ -8,16 +8,15 @@
 
 - Utilização MPI_ANY_SOURCE para permitir o atendimento das solicitações conforme a ordem de chegada.
 
-# Pontos para verificar:
-A execução é muito rápida, mesmo com ARRAY_SIZE = 10000
+- medição de tempo de execução paralela
+
+# Status atual versão sequencial
+- versão ok, com medição de tempo
+
+# Versão 2 (vetor.v2.c) do programa paralelo implementada. Mestre envia as tarefas iniciais aos escravos. Após finalizar uma tarefa, cada escravo solicita novo trabalho ao mestre.
+
 
 # Próximos passos:
-
-- Implementar a versão sequencial para servir como referência.
-
-- Adicionar medição do tempo de execução:
-   - tempo sequencial;
-   - tempo paralelo. ok
 
 - Testar os tamanhos indicados no enunciado:
    - 10.000
@@ -33,11 +32,3 @@ A execução é muito rápida, mesmo com ARRAY_SIZE = 10000
 - Calcular Speedup e eficiência.
 
 - Analisar o balanceamento de carga entre os escravos.
-
-
-
-!!!!!!!
-
-manter essa versão dos escravos solicitando as tarefas desde o início
-
-Nova versão: mestre manda uma rajada inicial de tarefas para os escravos, escravos vão solicitando novas tarefas conforme forem concluindo
