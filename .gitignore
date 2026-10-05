@@ -7,8 +7,15 @@
 /tri_simple
 /tri_saco
 /tri_saco_mpi
+/sequencial
+/vetor_v2
+
 /exercices/a.out
 /exercices/hello_mpi
 /exercices/master_worker
 /exercices/master_worker_basic
 /exercices/master_worker_dynamic
+
+# Executaveis da versao principal
+vetor
+vetor.v2
