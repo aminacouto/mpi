@@ -81,6 +81,18 @@ int main(int argc, char *argv[])
     // Descobre quantos processos existem
     MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
+    // Exige um mestre e pelo menos um trabalhador. 
+if (proc_n < 2)
+{
+    if (my_rank == 0)
+    {
+        fprintf(stderr, "Execute com pelo menos 2 processos.\n");
+    }
+
+    MPI_Finalize();
+    return 1;
+}
+
 
     // Guarda qual tarefa está sendo executada por cada escravo
     int tarefa_do_escravo[proc_n];
@@ -134,20 +146,21 @@ int main(int argc, char *argv[])
                          TAG_TRABALHO,
                          MPI_COMM_WORLD);
 
-
+                    /*
                 printf("Mestre enviou tarefa inicial %d para escravo %d\n",
                        proxima_tarefa,
                        i);
 
-
+                    */
                 proxima_tarefa++;
+                
             }
 
             // Caso existam mais escravos do que tarefas
             else
             {
-                MPI_Send(message,
-                         1,
+                MPI_Send(NULL,
+                         0,
                          MPI_INT,
                          i,
                          TAG_FIM,
@@ -197,10 +210,10 @@ int main(int argc, char *argv[])
 
                 tarefas_concluidas++;
 
-
+                /*
                 printf("Mestre recebeu tarefa %d do escravo %d\n",
                        tarefa_id,
-                       escravo);
+                       escravo); */
             }
 
 
@@ -225,10 +238,10 @@ int main(int argc, char *argv[])
                              TAG_TRABALHO,
                              MPI_COMM_WORLD);
 
-
+                        /*
                     printf("Mestre enviou tarefa %d para escravo %d\n",
                            proxima_tarefa,
-                           escravo);
+                           escravo); */
 
 
                     proxima_tarefa++;
@@ -237,8 +250,8 @@ int main(int argc, char *argv[])
                 // Não existem mais tarefas disponíveis
                 else
                 {
-                    MPI_Send(message,
-                             1,
+                    MPI_Send(NULL,
+                             0,
                              MPI_INT,
                              escravo,
                              TAG_FIM,
@@ -251,9 +264,7 @@ int main(int argc, char *argv[])
         }
 
 
-        printf("\nTarefas concluídas: %d de %d\n",
-               tarefas_concluidas,
-               TAREFAS);
+       
     }
 
 
@@ -333,10 +344,40 @@ int main(int argc, char *argv[])
     // Mestre mostra o tempo total
     if (my_rank == 0)
     {
+        int erros = 0;
+
+    /* Verifica os valores e a posição de cada vetor. */
+    for (i = 0; i < TAREFAS; i++)
+    {
+        for (j = 0; j < ARRAY_SIZE; j++)
+        {
+            int esperado = i * ARRAY_SIZE + j + 1;
+
+            if (saco[i][j] != esperado)
+            {
+                erros++;
+            }
+        }
+    }
+
+
+if (erros == 0 && tarefas_concluidas == TAREFAS)
+{
+    printf("Verificacao: OK\n");
+}
+else
+{
+    printf("Verificacao: FALHOU — %d valores incorretos\n", erros);
+}
+
+
+         printf("\nTarefas concluídas: %d de %d\n",
+           tarefas_concluidas,
+           TAREFAS);
+
         printf("Tempo total do processamento paralelo: %.6f segundos\n",
                tempo_fim - tempo_inicio);
     }
-
 
     // Finaliza o MPI
     MPI_Finalize();

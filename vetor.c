@@ -81,6 +81,18 @@ int main(int argc, char *argv[])
     // Descobre quantos processos existem
     MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
+    // Exige um mestre e pelo menos um trabalhador. 
+if (proc_n < 2)
+{
+    if (my_rank == 0)
+    {
+        fprintf(stderr, "Execute com pelo menos 2 processos.\n");
+    }
+
+    MPI_Finalize();
+    return 1;
+}
+
 
     // Cada posição guarda qual tarefa está sendo executada
     int tarefa_do_escravo[proc_n];
