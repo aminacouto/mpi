@@ -3,18 +3,11 @@ RESULTADOS DOS TESTES MPI
 ==================================================
 Tarefas: 64
 Repetições por configuração: 3
-
-CONFIGURAÇÃO DO CLUSTER
-Sockets por nó: 2
-Núcleos por socket: 4
-Núcleos físicos por nó: 8
-Threads por núcleo: 2
-CPUs lógicas por nó: 16
 ==================================================
 
 
 ##################################################
-Data: Tue Oct  6 18:23:50 -03 2026
+Data: Tue Oct  6 09:43:39 -03 2026
 Tarefas: 64
 ARRAY_SIZE: 10000
 Repetições: 3
@@ -25,265 +18,217 @@ TESTE 1
 Versão: Sequencial
 Execução: 1 de 3
 Nós: 1
-Processos MPI: 1
-Núcleos físicos utilizados: 1
-HT: Não
+Processos: 1
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:23:50 -03 2026
+Data: Tue Oct  6 09:43:40 -03 2026
 ==================================================
 Tarefas concluídas: 64 de 64
-Tempo total do processamento sequencial: 28.731955 segundos
+Tempo total do processamento sequencial: 28.668480 segundos
 
 ==================================================
 TESTE 2
 Versão: Sequencial
 Execução: 2 de 3
 Nós: 1
-Processos MPI: 1
-Núcleos físicos utilizados: 1
-HT: Não
+Processos: 1
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:24:19 -03 2026
+Data: Tue Oct  6 09:44:09 -03 2026
 ==================================================
 Tarefas concluídas: 64 de 64
-Tempo total do processamento sequencial: 28.732439 segundos
+Tempo total do processamento sequencial: 28.684365 segundos
 
 ==================================================
 TESTE 3
 Versão: Sequencial
 Execução: 3 de 3
 Nós: 1
-Processos MPI: 1
-Núcleos físicos utilizados: 1
-HT: Não
+Processos: 1
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:24:48 -03 2026
+Data: Tue Oct  6 09:44:38 -03 2026
 ==================================================
 Tarefas concluídas: 64 de 64
-Tempo total do processamento sequencial: 28.723088 segundos
+Tempo total do processamento sequencial: 28.677576 segundos
 
 ==================================================
 TESTE 4
 Versão: Paralela V1
 Execução: 1 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:17 -03 2026
+Data: Tue Oct  6 09:45:06 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.359187 segundos
+Tempo total do processamento paralelo: 2.358821 segundos
 
 ==================================================
 TESTE 5
 Versão: Paralela V1
 Execução: 2 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:20 -03 2026
+Data: Tue Oct  6 09:45:09 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.359619 segundos
+Tempo total do processamento paralelo: 2.358837 segundos
 
 ==================================================
 TESTE 6
 Versão: Paralela V1
 Execução: 3 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:23 -03 2026
+Data: Tue Oct  6 09:45:12 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.360884 segundos
+Tempo total do processamento paralelo: 2.360329 segundos
 
 ==================================================
 TESTE 7
 Versão: Paralela V1
 Execução: 1 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:25 -03 2026
+Data: Tue Oct  6 09:45:15 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.687290 segundos
+Tempo total do processamento paralelo: 2.698539 segundos
 
 ==================================================
 TESTE 8
 Versão: Paralela V1
 Execução: 2 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:28 -03 2026
+Data: Tue Oct  6 09:45:18 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.677964 segundos
+Tempo total do processamento paralelo: 2.688790 segundos
 
 ==================================================
 TESTE 9
 Versão: Paralela V1
 Execução: 3 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:32 -03 2026
+Data: Tue Oct  6 09:45:21 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.689189 segundos
+Tempo total do processamento paralelo: 2.693605 segundos
 
 ==================================================
 TESTE 10
 Versão: Paralela V2
 Execução: 1 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:35 -03 2026
+Data: Tue Oct  6 09:45:24 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.359847 segundos
+Tempo total do processamento paralelo: 2.359497 segundos
 
 ==================================================
 TESTE 11
 Versão: Paralela V2
 Execução: 2 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:38 -03 2026
+Data: Tue Oct  6 09:45:27 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.359091 segundos
+Tempo total do processamento paralelo: 2.358977 segundos
 
 ==================================================
 TESTE 12
 Versão: Paralela V2
 Execução: 3 de 3
 Nós: 2
-Processos MPI: 16
-Processos por nó: 8
-Núcleos físicos utilizados: 16
-HT: Não
+Processos: 16
 Escravos: 15
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:40 -03 2026
+Data: Tue Oct  6 09:45:30 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.358588 segundos
+Tempo total do processamento paralelo: 2.358954 segundos
 
 ==================================================
 TESTE 13
 Versão: Paralela V2
 Execução: 1 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:43 -03 2026
+Data: Tue Oct  6 09:45:33 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.679187 segundos
+Tempo total do processamento paralelo: 2.672171 segundos
 
 ==================================================
 TESTE 14
 Versão: Paralela V2
 Execução: 2 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:46 -03 2026
+Data: Tue Oct  6 09:45:36 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.688214 segundos
+Tempo total do processamento paralelo: 2.684198 segundos
 
 ==================================================
 TESTE 15
 Versão: Paralela V2
 Execução: 3 de 3
 Nós: 2
-Processos MPI: 32
-Processos por nó: 16
-Núcleos físicos utilizados: 16
-Threads utilizadas: 32
-HT: Sim
+Processos: 32
 Escravos: 31
 Tarefas: 64
 ARRAY_SIZE: 10000
-Data: Tue Oct  6 18:25:49 -03 2026
+Data: Tue Oct  6 09:45:39 -03 2026
 ==================================================
 
 Tarefas concluídas: 64 de 64
-Tempo total do processamento paralelo: 2.677495 segundos
+Tempo total do processamento paralelo: 2.679089 segundos
 
