@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <mpi.h>
 
-#define TAREFAS 10
+#define TAREFAS 64
 #define ARRAY_SIZE 10000
 
 // Tipos de mensagens
@@ -135,9 +135,9 @@ int main(int argc, char *argv[])
                          MPI_COMM_WORLD);
 
 
-                printf("Mestre enviou tarefa inicial %d para escravo %d\n",
-                       proxima_tarefa,
-                       i);
+                //printf("Mestre enviou tarefa inicial %d para escravo %d\n",
+                  //     proxima_tarefa,
+                    //   i);
 
 
                 proxima_tarefa++;
@@ -198,9 +198,9 @@ int main(int argc, char *argv[])
                 tarefas_concluidas++;
 
 
-                printf("Mestre recebeu tarefa %d do escravo %d\n",
-                       tarefa_id,
-                       escravo);
+                //printf("Mestre recebeu tarefa %d do escravo %d\n",
+                  //     tarefa_id,
+                    //   escravo);
             }
 
 
@@ -226,9 +226,9 @@ int main(int argc, char *argv[])
                              MPI_COMM_WORLD);
 
 
-                    printf("Mestre enviou tarefa %d para escravo %d\n",
-                           proxima_tarefa,
-                           escravo);
+                   // printf("Mestre enviou tarefa %d para escravo %d\n",
+                     //      proxima_tarefa,
+                       //    escravo);
 
 
                     proxima_tarefa++;

@@ -3,8 +3,17 @@
 #include <stdio.h>
 #include <mpi.h>
 
-#define TAREFAS 10
+//#define TAREFAS 64
+//#define ARRAY_SIZE 10000
+
+// Para permitir que TAREFAS e ARRAY_SIZE sejam definidos externamente pelo testes.sh.
+#ifndef TAREFAS
+#define TAREFAS 64
+#endif
+
+#ifndef ARRAY_SIZE
 #define ARRAY_SIZE 10000
+#endif
 
 // Tipos de mensagens
 #define TAG_PEDIDO 100
@@ -143,9 +152,9 @@ int main(int argc, char *argv[])
                              TAG_TRABALHO,
                              MPI_COMM_WORLD);
 
-                    printf("Mestre enviou tarefa %d para escravo %d\n",
-                           proxima_tarefa,
-                           escravo);
+                    //printf("Mestre enviou tarefa %d para escravo %d\n",
+                           //proxima_tarefa,
+                           //escravo);
 
                     proxima_tarefa++;
                 }
@@ -183,9 +192,9 @@ int main(int argc, char *argv[])
 
                 tarefas_concluidas++;
 
-                printf("Mestre recebeu tarefa %d do escravo %d\n",
-                       tarefa_id,
-                       escravo);
+                //printf("Mestre recebeu tarefa %d do escravo %d\n",
+                  //     tarefa_id,
+                    //   escravo);
             }
         }
 

@@ -1,0 +1,234 @@
+==================================================
+RESULTADOS DOS TESTES MPI
+==================================================
+Tarefas: 64
+Repetições por configuração: 3
+==================================================
+
+
+##################################################
+Data: Tue Oct  6 09:43:39 -03 2026
+Tarefas: 64
+ARRAY_SIZE: 10000
+Repetições: 3
+##################################################
+
+==================================================
+TESTE 1
+Versão: Sequencial
+Execução: 1 de 3
+Nós: 1
+Processos: 1
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:43:40 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 28.668480 segundos
+
+==================================================
+TESTE 2
+Versão: Sequencial
+Execução: 2 de 3
+Nós: 1
+Processos: 1
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:44:09 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 28.684365 segundos
+
+==================================================
+TESTE 3
+Versão: Sequencial
+Execução: 3 de 3
+Nós: 1
+Processos: 1
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:44:38 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 28.677576 segundos
+
+==================================================
+TESTE 4
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:06 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.358821 segundos
+
+==================================================
+TESTE 5
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:09 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.358837 segundos
+
+==================================================
+TESTE 6
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:12 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.360329 segundos
+
+==================================================
+TESTE 7
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:15 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.698539 segundos
+
+==================================================
+TESTE 8
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:18 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.688790 segundos
+
+==================================================
+TESTE 9
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:21 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.693605 segundos
+
+==================================================
+TESTE 10
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:24 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.359497 segundos
+
+==================================================
+TESTE 11
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:27 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.358977 segundos
+
+==================================================
+TESTE 12
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos: 16
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:30 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.358954 segundos
+
+==================================================
+TESTE 13
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:33 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.672171 segundos
+
+==================================================
+TESTE 14
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:36 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.684198 segundos
+
+==================================================
+TESTE 15
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos: 32
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 10000
+Data: Tue Oct  6 09:45:39 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 2.679089 segundos
+
