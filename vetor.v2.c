@@ -1,10 +1,17 @@
 // Versão 2: Mestre envia as tarefas iniciais aos escravos. Após finalizar uma tarefa, cada escravo solicita novo trabalho ao mestre.
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <mpi.h>
 
+// Permite configurar os valores pela compilação em testes.sh.
+#ifndef TAREFAS
 #define TAREFAS 64
+#endif
+
+#ifndef ARRAY_SIZE
 #define ARRAY_SIZE 10000
+#endif
 
 // Tipos de mensagens
 #define TAG_PEDIDO 100
@@ -49,12 +56,6 @@ int main(int argc, char *argv[])
     double tempo_inicio;
     double tempo_fim;
 
-    // Saco de trabalho
-    int saco[TAREFAS][ARRAY_SIZE];
-
-    // Vetor utilizado nas comunicações
-    int message[ARRAY_SIZE];
-
     int i, j;
 
     // Próxima tarefa disponível no saco
@@ -90,6 +91,44 @@ int main(int argc, char *argv[])
         tarefa_do_escravo[i] = -1;
     }
 
+    // =====================================================
+    // ALOCAÇÃO DE MEMÓRIA
+    // =====================================================
+
+    // Cada processo precisa apenas de um vetor de comunicação
+    int *message = malloc(
+        (size_t)ARRAY_SIZE *
+        sizeof(int)
+    );
+
+    if (message == NULL)
+    {
+        fprintf(stderr,
+                "Erro ao alocar memória para message no processo %d.\n",
+                my_rank);
+
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
+
+    // Somente o mestre precisa armazenar o saco inteiro
+    int *saco = NULL;
+
+    if (my_rank == 0)
+    {
+        saco = malloc(
+            (size_t)TAREFAS *
+            ARRAY_SIZE *
+            sizeof(int)
+        );
+
+        if (saco == NULL)
+        {
+            fprintf(stderr,
+                    "Erro ao alocar memória para o saco de trabalho.\n");
+
+            MPI_Abort(MPI_COMM_WORLD, 1);
+        }
+    }
 
     // Sincroniza todos os processos antes da medição
     MPI_Barrier(MPI_COMM_WORLD);
@@ -108,7 +147,8 @@ int main(int argc, char *argv[])
         {
             for (j = 0; j < ARRAY_SIZE; j++)
             {
-                saco[i][j] = ARRAY_SIZE - j + (i * ARRAY_SIZE);
+                saco[i * ARRAY_SIZE + j] =
+                    ARRAY_SIZE - j + (i * ARRAY_SIZE);
             }
         }
 
@@ -127,18 +167,14 @@ int main(int argc, char *argv[])
 
 
                 // Envia o vetor diretamente para o escravo
-                MPI_Send(saco[proxima_tarefa],
-                         ARRAY_SIZE,
-                         MPI_INT,
-                         i,
-                         TAG_TRABALHO,
-                         MPI_COMM_WORLD);
-
-
-                //printf("Mestre enviou tarefa inicial %d para escravo %d\n",
-                  //     proxima_tarefa,
-                    //   i);
-
+                MPI_Send(
+                    &saco[proxima_tarefa * ARRAY_SIZE],
+                    ARRAY_SIZE,
+                    MPI_INT,
+                    i,
+                    TAG_TRABALHO,
+                    MPI_COMM_WORLD
+                );
 
                 proxima_tarefa++;
             }
@@ -185,22 +221,18 @@ int main(int argc, char *argv[])
             if (status.MPI_TAG == TAG_RESULTADO)
             {
                 // Descobre qual tarefa estava com esse escravo
-                int tarefa_id = tarefa_do_escravo[escravo];
+                int tarefa_id =
+                    tarefa_do_escravo[escravo];
 
 
-                // Guarda o resultado na posição original da tarefa dentro do saco
+                // Guarda o resultado na posição original da tarefa
                 for (j = 0; j < ARRAY_SIZE; j++)
                 {
-                    saco[tarefa_id][j] = message[j];
+                    saco[tarefa_id * ARRAY_SIZE + j] =
+                        message[j];
                 }
 
-
                 tarefas_concluidas++;
-
-
-                //printf("Mestre recebeu tarefa %d do escravo %d\n",
-                  //     tarefa_id,
-                    //   escravo);
             }
 
 
@@ -213,23 +245,20 @@ int main(int argc, char *argv[])
                 // Ainda existem tarefas no saco
                 if (proxima_tarefa < TAREFAS)
                 {
-                    // Registra qual nova tarefa será executada por esse escravo
-                    tarefa_do_escravo[escravo] = proxima_tarefa;
+                    // Registra qual nova tarefa será executada
+                    tarefa_do_escravo[escravo] =
+                        proxima_tarefa;
 
 
                     // Envia o próximo vetor
-                    MPI_Send(saco[proxima_tarefa],
-                             ARRAY_SIZE,
-                             MPI_INT,
-                             escravo,
-                             TAG_TRABALHO,
-                             MPI_COMM_WORLD);
-
-
-                   // printf("Mestre enviou tarefa %d para escravo %d\n",
-                     //      proxima_tarefa,
-                       //    escravo);
-
+                    MPI_Send(
+                        &saco[proxima_tarefa * ARRAY_SIZE],
+                        ARRAY_SIZE,
+                        MPI_INT,
+                        escravo,
+                        TAG_TRABALHO,
+                        MPI_COMM_WORLD
+                    );
 
                     proxima_tarefa++;
                 }
@@ -243,7 +272,6 @@ int main(int argc, char *argv[])
                              escravo,
                              TAG_FIM,
                              MPI_COMM_WORLD);
-
 
                     escravos_finalizados++;
                 }
@@ -267,7 +295,7 @@ int main(int argc, char *argv[])
         // PRIMEIRA TAREFA
         // =================================================
 
-        // Espera o mestre enviar.
+        // Espera o mestre enviar
         MPI_Recv(message,
                  ARRAY_SIZE,
                  MPI_INT,
@@ -337,6 +365,16 @@ int main(int argc, char *argv[])
                tempo_fim - tempo_inicio);
     }
 
+    // =====================================================
+    // LIBERAÇÃO DA MEMÓRIA
+    // =====================================================
+
+    free(message);
+
+    if (my_rank == 0)
+    {
+        free(saco);
+    }
 
     // Finaliza o MPI
     MPI_Finalize();

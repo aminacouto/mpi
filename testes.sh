@@ -1,16 +1,23 @@
 #!/bin/bash
 
+#SBATCH --export=ALL
+#SBATCH -N 2
+#SBATCH --exclusive
+#SBATCH --no-requeue
+#SBATCH -J mpi_testes
+#SBATCH -o mpi_testes.%j.out
+
 # ============================================================
 # Testes de desempenho - MPI Mestre/Escravo
 # ============================================================
-
+cd ~/Trabalho/mpi
 TAREFAS=64
-
-TAMANHOS=(10000)
+TAMANHOS=(100)
+#TAMANHOS=(10000)
 
 # Depois:
-# TAMANHOS=(100000)
-# TAMANHOS=(1000000)
+#TAMANHOS=(100000)
+#TAMANHOS=(1000000) Feito separadamente em testes_1m.sh
 
 REPETICOES=3
 

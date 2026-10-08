@@ -133,6 +133,19 @@ Processo 2 → Escravo
 Processo 3 → Escravo
 ```
 
+Rodar com sbatch: 
+```bash
+sbatch testes.sh
+```
+
+```bash
+squeue -u $USER
+```
+
+```bash
+scancel JOBID
+```
+
 ---
 
 ## 10. Fluxo de desenvolvimento

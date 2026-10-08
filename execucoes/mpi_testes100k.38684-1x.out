@@ -1,0 +1,111 @@
+
+==================================================
+Preparando ARRAY_SIZE = 100000
+==================================================
+
+##################################################
+Data: Wed Oct  7 10:22:06 -03 2026
+Tarefas: 64
+ARRAY_SIZE: 100000
+Repetições: 1
+##################################################
+
+Compilando versão paralela V1...
+Compilando versão paralela V2...
+Compilando versão sequencial...
+Compilação concluída.
+
+==================================================
+TESTE 16
+Versão: Sequencial
+Execução: 1 de 1
+Nós: 1
+Processos MPI: 1
+Núcleos físicos utilizados: 1
+HT: Não
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Wed Oct  7 10:22:06 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 2875.595057 segundos
+
+==================================================
+TESTE 17
+Versão: Paralela V1
+Execução: 1 de 1
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Wed Oct  7 11:10:02 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 236.615016 segundos
+
+==================================================
+TESTE 18
+Versão: Paralela V1
+Execução: 1 de 1
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Wed Oct  7 11:13:59 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 270.721260 segundos
+
+==================================================
+TESTE 19
+Versão: Paralela V2
+Execução: 1 de 1
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Wed Oct  7 11:18:30 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 236.619096 segundos
+
+==================================================
+TESTE 20
+Versão: Paralela V2
+Execução: 1 de 1
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Wed Oct  7 11:22:27 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 269.846246 segundos
+
+
+==================================================
+TESTES FINALIZADOS
+Resultados salvos em: resultados.txt
+==================================================

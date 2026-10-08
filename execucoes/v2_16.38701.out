@@ -1,0 +1,25 @@
+
+##################################################
+Data: Thu Oct  8 07:44:06 -03 2026
+Tarefas: 64
+ARRAY_SIZE: 1000000
+Teste: v2_16
+##################################################
+
+==================================================
+Versão: Paralela V2
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 1000000
+Data: Thu Oct  8 07:44:06 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 23809.193569 segundos
+
+Fim do teste: Thu Oct  8 14:20:56 -03 2026

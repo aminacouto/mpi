@@ -15,9 +15,6 @@
 
 # Versão 2 (vetor.v2.c) do programa paralelo implementada. Mestre envia as tarefas iniciais aos escravos. Após finalizar uma tarefa, cada escravo solicita novo trabalho ao mestre.
 
-
-# Próximos passos:
-
 - Testar os tamanhos indicados no enunciado:
    - 10.000
    - 100.000
@@ -31,4 +28,39 @@
 
 - Calcular Speedup e eficiência.
 
+# Próximos passos:
+
 - Analisar o balanceamento de carga entre os escravos.
+
+
+## Anotações: 
+1. Problema de alocação de memória
+Ao executar os testes com vetores de tamanho de 10.000, as tarefas foram processadas corretamente. Porém, ao aumentar o ARRAY_SIZE para 100.000, foi identificado um erro de Segmentation fault.
+Identificamos que o problema ocorreu porque o saco de tarefas era declarado como uma variável local, fazendo com que sua memória fosse alocada na stack de cada processo. 
+Para corrigir isso, alteramos o código para utilizar alocação dinâmica de memória com 'malloc'. Assim, o saco de tarefas passou a ser alocado apenas pelo processo mestre, enquanto os processos escravos passaram a alocar somente o vetor necessário para receber, ordenar e devolver uma tarefa.
+
+2. Para ARRAY_SIZE = 1.000.000, a execução sequencial não pôde ser concluída devido ao custo computacional do Bubble Sort no pior caso. A partir da execução com 100.000 elementos, observou-se crescimento aproximadamente quadrático do tempo. A estimativa para 1.000.000 de elementos ultrapassa 80 horas, enquanto a política do cluster Atlântica limita jobs de um nó a 16 horas e jobs de dois nós a 8 horas.
+Solução: 
+script de teste separado para ARRAY_SIZE = 1.000.000 (testes_1m.sh) para rodar um job para cada configuração: 
+- sbatch testes_1m.sh v1_16
+- sbatch testes_1m.sh v1_32
+- sbatch testes_1m.sh v2_16
+- sbatch testes_1m.sh v2_32
+
+
+## Resumo:
+vetor.c
+vetor.v2.c
+sequencial.c
+
+testes.sh
+    10.000 e 100.000
+    execução completa
+    3 repetições
+    enviado com sbatch
+
+testes_1m.sh
+    1.000.000
+    uma configuração por job
+    1 repetição
+    enviado com sbatch

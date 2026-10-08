@@ -1,6 +1,7 @@
 // Versão 1: escravos solicitam trabalho ao mestre, que distribui dinamicamente as tarefas.
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <mpi.h>
 
 //#define TAREFAS 64
@@ -58,12 +59,6 @@ int main(int argc, char *argv[])
     double tempo_inicio;
     double tempo_fim;
 
-    // Saco de trabalho
-    int saco[TAREFAS][ARRAY_SIZE];
-
-    // Vetor utilizado nas comunicações
-    int message[ARRAY_SIZE];
-
     int i, j;
 
     // Próxima posição do saco que será enviada
@@ -91,8 +86,43 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
 
-    // Cada posição guarda qual tarefa está sendo executada
+    // Cada posição guarda qual tarefa está sendo executada por cada escravo.
     int tarefa_do_escravo[proc_n];
+
+    // =====================================================
+    // ALOCAÇÃO DE MEMÓRIA
+    // =====================================================
+
+    // Cada processo precisa apenas de um vetor para comunicação.
+    int *message = malloc((size_t)ARRAY_SIZE * sizeof(int));
+
+    if (message == NULL)
+    {
+        fprintf(stderr,
+                "Erro ao alocar memória para message no processo %d.\n",
+                my_rank);
+
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
+
+
+    // Somente o mestre precisa armazenar o saco inteiro.
+    int *saco = NULL;
+
+    if (my_rank == 0)
+    {
+        saco = malloc((size_t)TAREFAS *
+                      ARRAY_SIZE *
+                      sizeof(int));
+
+        if (saco == NULL)
+        {
+            fprintf(stderr,
+                    "Erro ao alocar memória para o saco de trabalho.\n");
+
+            MPI_Abort(MPI_COMM_WORLD, 1);
+        }
+    }
 
     // Sincroniza todos os processos antes da medição
     MPI_Barrier(MPI_COMM_WORLD);
@@ -110,7 +140,8 @@ int main(int argc, char *argv[])
         {
             for (j = 0; j < ARRAY_SIZE; j++)
             {
-                saco[i][j] = ARRAY_SIZE - j + (i * ARRAY_SIZE);
+                saco[i * ARRAY_SIZE + j] =
+                    ARRAY_SIZE - j + (i * ARRAY_SIZE);
             }
         }
 
@@ -141,20 +172,20 @@ int main(int argc, char *argv[])
                 // Ainda existem tarefas no saco
                 if (proxima_tarefa < TAREFAS)
                 {
-                    // Registra qual tarefa será executada por este escravo
-                    tarefa_do_escravo[escravo] = proxima_tarefa;
+                    // Registra qual tarefa será executada por este escravo.
+                    tarefa_do_escravo[escravo] =
+                        proxima_tarefa;
 
-                    // Envia somente o vetor 
-                    MPI_Send(saco[proxima_tarefa],
-                             ARRAY_SIZE,
-                             MPI_INT,
-                             escravo,
-                             TAG_TRABALHO,
-                             MPI_COMM_WORLD);
 
-                    //printf("Mestre enviou tarefa %d para escravo %d\n",
-                           //proxima_tarefa,
-                           //escravo);
+                    // Envia somente o vetor correspondente.
+                    MPI_Send(
+                        &saco[proxima_tarefa * ARRAY_SIZE],
+                        ARRAY_SIZE,
+                        MPI_INT,
+                        escravo,
+                        TAG_TRABALHO,
+                        MPI_COMM_WORLD
+                    );
 
                     proxima_tarefa++;
                 }
@@ -181,20 +212,21 @@ int main(int argc, char *argv[])
 
             else if (status.MPI_TAG == TAG_RESULTADO)
             {
-                // Descobre qual tarefa estava sendo executada por esse escravo
-                int tarefa_id = tarefa_do_escravo[escravo];
+                // Descobre qual tarefa estava sendo
+                // executada por esse escravo.
+                int tarefa_id =
+                    tarefa_do_escravo[escravo];
 
-                // Guarda o vetor recebido na posição original correspondente dentro do saco
+
+                // Guarda o vetor recebido na posição
+                // original correspondente dentro do saco.
                 for (j = 0; j < ARRAY_SIZE; j++)
                 {
-                    saco[tarefa_id][j] = message[j];
+                    saco[tarefa_id * ARRAY_SIZE + j] =
+                        message[j];
                 }
 
                 tarefas_concluidas++;
-
-                //printf("Mestre recebeu tarefa %d do escravo %d\n",
-                  //     tarefa_id,
-                    //   escravo);
             }
         }
 
@@ -251,7 +283,7 @@ int main(int argc, char *argv[])
     }
 
 
-    // Aguarda todos os processos concluírem antes de finalizar a medição
+    // Aguarda todos os processos concluírem antes de finalizar a medição.
     MPI_Barrier(MPI_COMM_WORLD);
 
     tempo_fim = MPI_Wtime();
@@ -261,6 +293,17 @@ int main(int argc, char *argv[])
     {
         printf("Tempo total do processamento paralelo: %.6f segundos\n",
                tempo_fim - tempo_inicio);
+    }
+
+    // =====================================================
+    // LIBERAÇÃO DA MEMÓRIA
+    // =====================================================
+
+    free(message);
+
+    if (my_rank == 0)
+    {
+        free(saco);
     }
 
     // Finaliza o MPI

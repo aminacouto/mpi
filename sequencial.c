@@ -1,8 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
+// Permite configurar os valores pela compilação em testes.sh.
+#ifndef TAREFAS
 #define TAREFAS 64
+#endif
+
+#ifndef ARRAY_SIZE
 #define ARRAY_SIZE 10000
+#endif
 
 
 // Bubble Sort 
@@ -46,13 +53,23 @@ double tempo_atual()
 
 int main()
 {
-    // Saco de trabalho
-    int saco[TAREFAS][ARRAY_SIZE];
-
     int i, j;
 
     double tempo_inicio;
     double tempo_fim;
+
+    // Aloca dinamicamente o saco de trabalho
+    int *saco = malloc(
+        (size_t)TAREFAS *
+        ARRAY_SIZE *
+        sizeof(int)
+    );
+
+    if (saco == NULL)
+    {
+        printf("Erro ao alocar memória para o saco de trabalho.\n");
+        return 1;
+    }
 
 
     // Inicia a medição no mesmo ponto da versão paralela
@@ -64,7 +81,8 @@ int main()
     {
         for (j = 0; j < ARRAY_SIZE; j++)
         {
-            saco[i][j] = ARRAY_SIZE - j + (i * ARRAY_SIZE);
+            saco[i * ARRAY_SIZE + j] =
+                ARRAY_SIZE - j + (i * ARRAY_SIZE);
         }
     }
 
@@ -72,7 +90,10 @@ int main()
     // Ordena todos os vetores sequencialmente
     for (i = 0; i < TAREFAS; i++)
     {
-        bs(ARRAY_SIZE, saco[i]);
+        bs(
+            ARRAY_SIZE,
+            &saco[i * ARRAY_SIZE]
+        );
     }
 
 
@@ -87,6 +108,8 @@ int main()
     printf("Tempo total do processamento sequencial: %.6f segundos\n",
            tempo_fim - tempo_inicio);
 
+    // Libera a memória
+    free(saco);
 
     return 0;
 }
