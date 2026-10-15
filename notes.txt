@@ -28,9 +28,6 @@
 
 - Calcular Speedup e eficiência.
 
-# Próximos passos:
-
-- Analisar o balanceamento de carga entre os escravos.
 
 
 ## Anotações: 
@@ -64,3 +61,21 @@ testes_1m.sh
     uma configuração por job
     1 repetição
     enviado com sbatch
+
+
+# Próximos passos:
+
+executar com 4, 8 , 16, 32
+
+- Analisar o balanceamento de carga entre os escravos - pensar em quantas tarefas cada trabalhador executou
+
+gráfico 1 - avaliação das versões: execuções com 1, 4, 8, 16 e 32 processos
+
+gráfico 2- avaliação da carga: um gráfico avaliando o desempenho da melhor versão com 10k e 100k
+
+
+Slides: 
+- contexto do trabalho 
+- graficos de comparação das versões e das cargas
+
+- desbalanceamento de carga

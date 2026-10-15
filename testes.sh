@@ -5,23 +5,23 @@
 #SBATCH --exclusive
 #SBATCH --no-requeue
 #SBATCH -J mpi_testes
-#SBATCH -o mpi_testes.%j.out
+#SBATCH -o 100kNEW.%j.out
 
 # ============================================================
 # Testes de desempenho - MPI Mestre/Escravo
 # ============================================================
 cd ~/Trabalho/mpi
 TAREFAS=64
-TAMANHOS=(100)
+
+# Primeiro:
 #TAMANHOS=(10000)
 
 # Depois:
-#TAMANHOS=(100000)
-#TAMANHOS=(1000000) Feito separadamente em testes_1m.sh
+TAMANHOS=(100000)
 
 REPETICOES=3
 
-RESULTADOS="resultados.txt"
+RESULTADOS="testes.sh-100k.txt"
 
 
 # ============================================================
@@ -175,6 +175,84 @@ do
 
     done
 
+    # ========================================================
+    # PARALELA V1 - 4 PROCESSOS
+    # ========================================================
+
+    for REP in $(seq 1 $REPETICOES)
+    do
+
+        {
+            echo "=================================================="
+            echo "TESTE $TESTE"
+            echo "Versão: Paralela V1"
+            echo "Execução: $REP de $REPETICOES"
+            echo "Nós: 2"
+            echo "Processos MPI: 4"
+            echo "Processos por nó: 2"
+            echo "Núcleos físicos utilizados: 4"
+            echo "HT: Não"
+            echo "Escravos: 3"
+            echo "Tarefas: $TAREFAS"
+            echo "ARRAY_SIZE: $ARRAY_SIZE"
+            echo "Data: $(date)"
+            echo "=================================================="
+
+            srun --exclusive \
+                -N 2 \
+                -n 4 \
+                --ntasks-per-node=2 \
+                --cpus-per-task=1 \
+                --cpu-bind=cores \
+                ./vetor
+
+            echo
+
+        } | tee -a "$RESULTADOS"
+
+        TESTE=$((TESTE + 1))
+
+    done
+
+    # ========================================================
+    # PARALELA V1 - 8 PROCESSOS
+    # ========================================================
+
+    for REP in $(seq 1 $REPETICOES)
+    do
+
+        {
+            echo "=================================================="
+            echo "TESTE $TESTE"
+            echo "Versão: Paralela V1"
+            echo "Execução: $REP de $REPETICOES"
+            echo "Nós: 2"
+            echo "Processos MPI: 8"
+            echo "Processos por nó: 4"
+            echo "Núcleos físicos utilizados: 8"
+            echo "HT: Não"
+            echo "Escravos: 7"
+            echo "Tarefas: $TAREFAS"
+            echo "ARRAY_SIZE: $ARRAY_SIZE"
+            echo "Data: $(date)"
+            echo "=================================================="
+
+            srun --exclusive \
+                -N 2 \
+                -n 8 \
+                --ntasks-per-node=4 \
+                --cpus-per-task=1 \
+                --cpu-bind=cores \
+                ./vetor
+
+            echo
+
+        } | tee -a "$RESULTADOS"
+
+        TESTE=$((TESTE + 1))
+
+    done
+
 
     # ========================================================
     # PARALELA V1 - 16 PROCESSOS
@@ -256,6 +334,83 @@ do
 
     done
 
+    # ========================================================
+    # PARALELA V2 - 4 PROCESSOS
+    # ========================================================
+
+    for REP in $(seq 1 $REPETICOES)
+    do
+
+        {
+            echo "=================================================="
+            echo "TESTE $TESTE"
+            echo "Versão: Paralela V2"
+            echo "Execução: $REP de $REPETICOES"
+            echo "Nós: 2"
+            echo "Processos MPI: 4"
+            echo "Processos por nó: 2"
+            echo "Núcleos físicos utilizados: 4"
+            echo "HT: Não"
+            echo "Escravos: 3"
+            echo "Tarefas: $TAREFAS"
+            echo "ARRAY_SIZE: $ARRAY_SIZE"
+            echo "Data: $(date)"
+            echo "=================================================="
+
+            srun --exclusive \
+                -N 2 \
+                -n 4 \
+                --ntasks-per-node=2 \
+                --cpus-per-task=1 \
+                --cpu-bind=cores \
+                ./vetor.v2
+
+            echo
+
+        } | tee -a "$RESULTADOS"
+
+        TESTE=$((TESTE + 1))
+
+    done
+
+        # ========================================================
+    # PARALELA V2 - 8 PROCESSOS
+    # ========================================================
+
+    for REP in $(seq 1 $REPETICOES)
+    do
+
+        {
+            echo "=================================================="
+            echo "TESTE $TESTE"
+            echo "Versão: Paralela V2"
+            echo "Execução: $REP de $REPETICOES"
+            echo "Nós: 2"
+            echo "Processos MPI: 8"
+            echo "Processos por nó: 4"
+            echo "Núcleos físicos utilizados: 8"
+            echo "HT: Não"
+            echo "Escravos: 7"
+            echo "Tarefas: $TAREFAS"
+            echo "ARRAY_SIZE: $ARRAY_SIZE"
+            echo "Data: $(date)"
+            echo "=================================================="
+
+            srun --exclusive \
+                -N 2 \
+                -n 8 \
+                --ntasks-per-node=4 \
+                --cpus-per-task=1 \
+                --cpu-bind=cores \
+                ./vetor.v2
+
+            echo
+
+        } | tee -a "$RESULTADOS"
+
+        TESTE=$((TESTE + 1))
+
+    done
 
     # ========================================================
     # PARALELA V2 - 16 PROCESSOS

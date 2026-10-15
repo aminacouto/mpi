@@ -1,0 +1,889 @@
+
+==================================================
+Preparando ARRAY_SIZE = 100000
+==================================================
+
+##################################################
+Data: Fri Oct  9 11:45:52 -03 2026
+Tarefas: 64
+ARRAY_SIZE: 100000
+Repetições: 3
+##################################################
+
+Compilando versão paralela V1...
+Compilando versão paralela V2...
+Compilando versão sequencial...
+Compilação concluída.
+
+==================================================
+TESTE 1
+Versão: Sequencial
+Execução: 1 de 3
+Nós: 1
+Processos MPI: 1
+Núcleos físicos utilizados: 1
+HT: Não
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 11:45:52 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 2878.340977 segundos
+
+==================================================
+TESTE 2
+Versão: Sequencial
+Execução: 2 de 3
+Nós: 1
+Processos MPI: 1
+Núcleos físicos utilizados: 1
+HT: Não
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 12:33:51 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 2876.812638 segundos
+
+==================================================
+TESTE 3
+Versão: Sequencial
+Execução: 3 de 3
+Nós: 1
+Processos MPI: 1
+Núcleos físicos utilizados: 1
+HT: Não
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 13:21:48 -03 2026
+==================================================
+Tarefas concluídas: 64 de 64
+Tempo total do processamento sequencial: 2876.537759 segundos
+
+==================================================
+TESTE 4
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 14:09:44 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 988.069600 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 21 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 22 tarefas
+
+==================================================
+TESTE 5
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 14:26:13 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 987.418884 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 22 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 21 tarefas
+
+==================================================
+TESTE 6
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 14:42:41 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 987.066981 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 21 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 22 tarefas
+
+==================================================
+TESTE 7
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 14:59:08 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 474.105108 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 9 tarefas
+Trabalhador 2: 9 tarefas
+Trabalhador 3: 10 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 9 tarefas
+
+==================================================
+TESTE 8
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:07:02 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 473.917006 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 10 tarefas
+Trabalhador 2: 9 tarefas
+Trabalhador 3: 9 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 9 tarefas
+
+==================================================
+TESTE 9
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:14:57 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 474.025306 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 9 tarefas
+Trabalhador 2: 9 tarefas
+Trabalhador 3: 10 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 9 tarefas
+
+==================================================
+TESTE 10
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:22:51 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 237.195617 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 4 tarefas
+Trabalhador 2: 4 tarefas
+Trabalhador 3: 4 tarefas
+Trabalhador 4: 5 tarefas
+Trabalhador 5: 4 tarefas
+Trabalhador 6: 5 tarefas
+Trabalhador 7: 4 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 5 tarefas
+Trabalhador 10: 4 tarefas
+Trabalhador 11: 4 tarefas
+Trabalhador 12: 5 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 4 tarefas
+
+==================================================
+TESTE 11
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:26:48 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 237.363117 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 4 tarefas
+Trabalhador 2: 4 tarefas
+Trabalhador 3: 5 tarefas
+Trabalhador 4: 4 tarefas
+Trabalhador 5: 5 tarefas
+Trabalhador 6: 4 tarefas
+Trabalhador 7: 4 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 4 tarefas
+Trabalhador 10: 4 tarefas
+Trabalhador 11: 4 tarefas
+Trabalhador 12: 5 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 5 tarefas
+
+==================================================
+TESTE 12
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:30:46 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 236.812509 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 5 tarefas
+Trabalhador 2: 4 tarefas
+Trabalhador 3: 4 tarefas
+Trabalhador 4: 4 tarefas
+Trabalhador 5: 4 tarefas
+Trabalhador 6: 4 tarefas
+Trabalhador 7: 4 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 5 tarefas
+Trabalhador 10: 5 tarefas
+Trabalhador 11: 4 tarefas
+Trabalhador 12: 5 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 4 tarefas
+
+==================================================
+TESTE 13
+Versão: Paralela V1
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:34:43 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 254.881970 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 3 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 2 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 2 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 2 tarefas
+Trabalhador 31: 2 tarefas
+
+==================================================
+TESTE 14
+Versão: Paralela V1
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:38:58 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 255.169947 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 3 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 2 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 2 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 2 tarefas
+Trabalhador 31: 2 tarefas
+
+==================================================
+TESTE 15
+Versão: Paralela V1
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:43:14 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 250.946000 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 2 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 3 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 2 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 2 tarefas
+Trabalhador 31: 2 tarefas
+
+==================================================
+TESTE 16
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 15:47:25 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 988.927180 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 21 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 22 tarefas
+
+==================================================
+TESTE 17
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 16:03:55 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 986.930704 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 22 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 21 tarefas
+
+==================================================
+TESTE 18
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 4
+Processos por nó: 2
+Núcleos físicos utilizados: 4
+HT: Não
+Escravos: 3
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 16:20:22 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 989.659894 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 22 tarefas
+Trabalhador 2: 21 tarefas
+Trabalhador 3: 21 tarefas
+
+==================================================
+TESTE 19
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 16:36:52 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 474.040832 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 10 tarefas
+Trabalhador 2: 9 tarefas
+Trabalhador 3: 9 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 9 tarefas
+
+==================================================
+TESTE 20
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 16:44:46 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 473.441890 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 9 tarefas
+Trabalhador 2: 9 tarefas
+Trabalhador 3: 9 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 10 tarefas
+
+==================================================
+TESTE 21
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 8
+Processos por nó: 4
+Núcleos físicos utilizados: 8
+HT: Não
+Escravos: 7
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 16:52:40 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 473.928634 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 9 tarefas
+Trabalhador 2: 10 tarefas
+Trabalhador 3: 9 tarefas
+Trabalhador 4: 9 tarefas
+Trabalhador 5: 9 tarefas
+Trabalhador 6: 9 tarefas
+Trabalhador 7: 9 tarefas
+
+==================================================
+TESTE 22
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:00:34 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 237.365268 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 4 tarefas
+Trabalhador 2: 4 tarefas
+Trabalhador 3: 4 tarefas
+Trabalhador 4: 5 tarefas
+Trabalhador 5: 4 tarefas
+Trabalhador 6: 4 tarefas
+Trabalhador 7: 4 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 4 tarefas
+Trabalhador 10: 5 tarefas
+Trabalhador 11: 5 tarefas
+Trabalhador 12: 5 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 4 tarefas
+
+==================================================
+TESTE 23
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:04:32 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 237.329001 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 5 tarefas
+Trabalhador 2: 4 tarefas
+Trabalhador 3: 4 tarefas
+Trabalhador 4: 5 tarefas
+Trabalhador 5: 4 tarefas
+Trabalhador 6: 4 tarefas
+Trabalhador 7: 5 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 4 tarefas
+Trabalhador 10: 5 tarefas
+Trabalhador 11: 4 tarefas
+Trabalhador 12: 4 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 4 tarefas
+
+==================================================
+TESTE 24
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 16
+Processos por nó: 8
+Núcleos físicos utilizados: 16
+HT: Não
+Escravos: 15
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:08:29 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 237.254873 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 5 tarefas
+Trabalhador 2: 5 tarefas
+Trabalhador 3: 5 tarefas
+Trabalhador 4: 4 tarefas
+Trabalhador 5: 4 tarefas
+Trabalhador 6: 4 tarefas
+Trabalhador 7: 4 tarefas
+Trabalhador 8: 4 tarefas
+Trabalhador 9: 4 tarefas
+Trabalhador 10: 4 tarefas
+Trabalhador 11: 5 tarefas
+Trabalhador 12: 4 tarefas
+Trabalhador 13: 4 tarefas
+Trabalhador 14: 4 tarefas
+Trabalhador 15: 4 tarefas
+
+==================================================
+TESTE 25
+Versão: Paralela V2
+Execução: 1 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:12:27 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 247.054874 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 2 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 2 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 3 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 2 tarefas
+Trabalhador 31: 2 tarefas
+
+==================================================
+TESTE 26
+Versão: Paralela V2
+Execução: 2 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:16:34 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 248.539329 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 2 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 2 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 2 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 3 tarefas
+Trabalhador 31: 2 tarefas
+
+==================================================
+TESTE 27
+Versão: Paralela V2
+Execução: 3 de 3
+Nós: 2
+Processos MPI: 32
+Processos por nó: 16
+Núcleos físicos utilizados: 16
+Threads utilizadas: 32
+HT: Sim
+Escravos: 31
+Tarefas: 64
+ARRAY_SIZE: 100000
+Data: Fri Oct  9 17:20:43 -03 2026
+==================================================
+
+Tarefas concluídas: 64 de 64
+Tempo total do processamento paralelo: 250.737340 segundos
+
+Balanceamento de carga (tarefas executadas):
+Trabalhador 1: 2 tarefas
+Trabalhador 2: 3 tarefas
+Trabalhador 3: 2 tarefas
+Trabalhador 4: 2 tarefas
+Trabalhador 5: 2 tarefas
+Trabalhador 6: 2 tarefas
+Trabalhador 7: 2 tarefas
+Trabalhador 8: 2 tarefas
+Trabalhador 9: 2 tarefas
+Trabalhador 10: 2 tarefas
+Trabalhador 11: 2 tarefas
+Trabalhador 12: 2 tarefas
+Trabalhador 13: 2 tarefas
+Trabalhador 14: 2 tarefas
+Trabalhador 15: 2 tarefas
+Trabalhador 16: 2 tarefas
+Trabalhador 17: 2 tarefas
+Trabalhador 18: 2 tarefas
+Trabalhador 19: 2 tarefas
+Trabalhador 20: 2 tarefas
+Trabalhador 21: 2 tarefas
+Trabalhador 22: 3 tarefas
+Trabalhador 23: 2 tarefas
+Trabalhador 24: 2 tarefas
+Trabalhador 25: 2 tarefas
+Trabalhador 26: 2 tarefas
+Trabalhador 27: 2 tarefas
+Trabalhador 28: 2 tarefas
+Trabalhador 29: 2 tarefas
+Trabalhador 30: 2 tarefas
+Trabalhador 31: 2 tarefas
+
+
+==================================================
+TESTES FINALIZADOS
+Resultados salvos em: testes.sh-100k.txt
+==================================================

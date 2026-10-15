@@ -89,6 +89,14 @@ int main(int argc, char *argv[])
     // Cada posição guarda qual tarefa está sendo executada por cada escravo.
     int tarefa_do_escravo[proc_n];
 
+    // Conta resultados recebidos de cada trabalhador.
+    int tarefas_por_trabalhador[proc_n];
+
+    for (i = 0; i < proc_n; i++)
+    {
+        tarefas_por_trabalhador[i] = 0;
+    }
+
     // =====================================================
     // ALOCAÇÃO DE MEMÓRIA
     // =====================================================
@@ -123,9 +131,6 @@ int main(int argc, char *argv[])
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
     }
-
-    // Sincroniza todos os processos antes da medição
-    MPI_Barrier(MPI_COMM_WORLD);
 
     tempo_inicio = MPI_Wtime();
 
@@ -227,6 +232,7 @@ int main(int argc, char *argv[])
                 }
 
                 tarefas_concluidas++;
+                tarefas_por_trabalhador[escravo]++;
             }
         }
 
@@ -283,9 +289,6 @@ int main(int argc, char *argv[])
     }
 
 
-    // Aguarda todos os processos concluírem antes de finalizar a medição.
-    MPI_Barrier(MPI_COMM_WORLD);
-
     tempo_fim = MPI_Wtime();
 
     // Mestre mostra o tempo total
@@ -293,6 +296,14 @@ int main(int argc, char *argv[])
     {
         printf("Tempo total do processamento paralelo: %.6f segundos\n",
                tempo_fim - tempo_inicio);
+
+        // Exibe a distribuição após encerrar a medição de tempo.
+        printf("\nBalanceamento de carga (tarefas executadas):\n");
+        for (i = 1; i < proc_n; i++)
+        {
+            printf("Trabalhador %d: %d tarefas\n",
+                   i, tarefas_por_trabalhador[i]);
+        }
     }
 
     // =====================================================
