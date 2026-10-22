@@ -1,0 +1,168 @@
+# TPP2 — MPI Divisão e Conquista
+
+## Objetivo
+
+Implementar a ordenação paralela de um único vetor utilizando MPI e o modelo de divisão e conquista, seguindo o pseudocódigo desbalanceado disponibilizado pelo professor.
+
+Comparar o desempenho da versão paralela com as implementações sequenciais de Bubble Sort e qsort.
+
+## Status atual
+
+[x] Repositório reorganizado em pastas.
+[x] Arquivo dc.c criado com o pseudocódigo do professor.
+[x] Arquivos bs-sequencial.c e qs-sequencial.c criados.
+
+---
+
+## ETAPA 1 — Versão sequencial (bs-sequencial.c)
+
+[ ] Implementar Bubble Sort (bs), conforme o código fornecido.
+[ ] Implementar qsort() da biblioteca padrão C.
+[ ] Criar função de comparação para qsort().
+[ ] Inicializar vetor com valores em ordem decrescente.
+[ ] Definir ARRAY_SIZE para controlar o tamanho do vetor.
+[ ] Implementar DEBUG para visualizar o vetor nos testes pequenos.
+[ ] Testar com ARRAY_SIZE = 40.
+[ ] Verificar se ambos os algoritmos ordenam corretamente.
+[ ] Implementar medição de tempo de execução.
+[ ] Permitir testes com 10.000, 100.000 e 1.000.000 elementos.
+
+## ETAPA 2 — Versão paralela (dc.c)
+
+### 2.1 — Inicialização MPI
+
+[ ] Implementar MPI_Init().
+[ ] Identificar rank com MPI_Comm_rank().
+[ ] Identificar quantidade de processos com MPI_Comm_size().
+[ ] Definir ARRAY_SIZE.
+[ ] Definir delta (limite para divisão/conquista).
+[ ] Inicializar vetor em ordem decrescente no processo raiz.
+
+### 2.2 — Árvore de processos
+
+[ ] Definir a relação entre processos pais e filhos.
+[ ] Implementar identificação do processo pai.
+[ ] Implementar identificação dos filhos esquerdo e direito.
+[ ] Definir como os ranks serão distribuídos na árvore.
+[ ] Verificar a quantidade de processos necessária para cada configuração.
+[ ] Garantir que os processos utilizados correspondam à estrutura da árvore.
+
+### 2.3 — Divisão do vetor
+
+[ ] Implementar MPI_Recv() para receber o vetor do processo pai.
+[ ] Utilizar MPI_Get_count() para identificar o tamanho recebido.
+[ ] Verificar se tam_vetor <= delta.
+[ ] Caso não seja, dividir o vetor em duas partes.
+[ ] Enviar metade esquerda ao filho esquerdo utilizando MPI_Send().
+[ ] Enviar metade direita ao filho direito utilizando MPI_Send().
+[ ] Garantir que todos os elementos sejam distribuídos corretamente.
+
+### 2.4 — Conquista
+
+[ ] Implementar a função Bubble Sort no dc.c.
+[ ] Ordenar o segmento quando tam_vetor <= delta.
+[ ] Garantir que processos folha não tentem enviar tarefas a filhos inexistentes.
+[ ] Devolver o segmento ordenado ao processo pai.
+
+### 2.5 — Intercalação
+
+[ ] Adicionar a função interleaving() fornecida no enunciado.
+[ ] Receber os segmentos ordenados dos dois filhos.
+[ ] Intercalar os segmentos recebidos.
+[ ] Garantir que o segmento resultante esteja totalmente ordenado.
+[ ] Enviar o segmento ordenado ao pai.
+[ ] Garantir que o processo raiz obtenha o vetor completo ordenado.
+[ ] Tratar corretamente os buffers de memória utilizados.
+
+### 2.6 — Validação inicial
+
+[ ] Compilar dc.c utilizando mpicc.
+[ ] Testar com ARRAY_SIZE = 40 e delta = 10.
+[ ] Executar inicialmente com 7 processos MPI.
+[ ] Verificar divisão correta do vetor entre os processos.
+[ ] Verificar comunicação entre pais e filhos.
+[ ] Verificar intercalação dos segmentos.
+[ ] Conferir se o vetor final está ordenado.
+[ ] Verificar possíveis deadlocks.
+[ ] Testar outras configurações de processos.
+
+---
+
+## ETAPA 3 — Medições de desempenho
+
+[ ] Implementar medição de tempo da versão paralela.
+[ ] Desabilitar DEBUG durante as medições.
+[ ] Definir uma metodologia consistente para medir os tempos.
+[ ] Executar versão sequencial Bubble Sort.
+[ ] Executar versão sequencial qsort.
+[ ] Executar versão MPI com diferentes quantidades de processos.
+[ ] Medir os tempos com 10.000 elementos.
+[ ] Medir os tempos com 100.000 elementos.
+[ ] Medir os tempos com 1.000.000 de elementos.
+[ ] Realizar os experimentos no cluster Atlântica.
+[ ] Utilizar dois nós exclusivos conforme o enunciado.
+[ ] Registrar tempos e configurações de cada experimento.
+
+## ETAPA 4 — Speedup e eficiência
+
+[ ] Calcular speedup para cada configuração paralela.
+[ ] Calcular eficiência para cada configuração paralela.
+[ ] Comparar desempenho sequencial e paralelo.
+[ ] Analisar impacto do número de processos.
+[ ] Analisar impacto do tamanho do vetor.
+
+Fórmulas:
+
+Speedup = Tempo sequencial / Tempo paralelo
+
+Eficiência = Speedup / Número de processos
+
+## ETAPA 5 — Balanceamento de carga
+
+[ ] Analisar a distribuição de trabalho nos diferentes níveis da árvore.
+[ ] Identificar processos que executam ordenação e intercalação.
+[ ] Identificar possíveis desequilíbrios de carga.
+[ ] Analisar o desempenho da versão desbalanceada.
+[ ] Identificar a técnica de balanceamento sem alteração de código mencionada no enunciado.
+[ ] Aplicar a técnica de balanceamento.
+[ ] Comparar os tempos antes e depois.
+[ ] Analisar os ganhos obtidos.
+
+## ETAPA 6 — Hyper-Threading (HT)
+
+[ ] Verificar a configuração de HT dos nós do Atlântica.
+[ ] Definir as configurações necessárias para comparar os resultados.
+[ ] Executar os testes com as configurações escolhidas.
+[ ] Registrar os tempos.
+[ ] Analisar os ganhos ou perdas de desempenho com HT.
+
+## ETAPA 7 — Resultados e relatório
+
+[ ] Organizar uma tabela com os tempos obtidos.
+[ ] Preparar resultados de speedup e eficiência.
+[ ] Preparar gráficos, caso necessário.
+[ ] Analisar o balanceamento de carga.
+[ ] Analisar os resultados de HT.
+[ ] Analisar o balanceamento sem alteração de código.
+[ ] Elaborar relatório PDF de uma página, em duas colunas.
+[ ] Incluir os códigos-fonte em anexo.
+[ ] Revisar clareza do código, comentários e nomes de variáveis.
+[ ] Atualizar README do Trabalho 2.
+[ ] Revisar arquivos finais no GitHub.
+[ ] Realizar entrega e apresentação.
+
+---
+
+## Pontos importantes para verificar
+
+- A implementação deve seguir o pseudocódigo desbalanceado do professor.
+- O trabalho utiliza um único vetor, e não um saco de tarefas.
+- A ordenação nas folhas deve utilizar Bubble Sort.
+- Os processos intermediários devem intercalar os resultados.
+- O processo raiz deve receber o vetor completo ordenado.
+- A distribuição dos processos na árvore precisa ser definida.
+- A função interleaving() fornecida assume duas metades ordenadas e merece atenção para segmentos de tamanhos diferentes.
+- A relação entre delta, tamanho do vetor e quantidade de processos precisa ser definida para os experimentos.
+- O enunciado não detalha a técnica de balanceamento sem alteração de código.
+- Os experimentos devem utilizar dois nós exclusivos do Atlântica.
+- As medições devem ser realizadas sem impressões de depuração.
