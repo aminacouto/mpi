@@ -166,3 +166,27 @@ Eficiência = Speedup / Número de processos
 - O enunciado não detalha a técnica de balanceamento sem alteração de código.
 - Os experimentos devem utilizar dois nós exclusivos do Atlântica.
 - As medições devem ser realizadas sem impressões de depuração.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+talvez implementar dc.c com qsort - em aberto,vamos pensar
+implementar qs-sequencial - revisar se é isso mesmo
+
+
+array-size=1000000 bubble sort 
+- 1 núcleo leva 74 min 
+- 3 processos e 3 nucleos leva 18 min 
