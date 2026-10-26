@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-#define TAREFAS 10
+#define TAREFAS 64
 #define ARRAY_SIZE 10000
 
 
