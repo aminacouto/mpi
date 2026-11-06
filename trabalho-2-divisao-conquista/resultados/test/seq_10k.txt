@@ -1,0 +1,26 @@
+========================================
+RESULTADOS DAS MEDIÇÕES — TPP2
+========================================
+Elementos: 10000
+Repetições: 3
+
+----------------------------------------
+Versão: Bubble Sort sequencial
+Processos: 1
+Nós utilizados: 1
+Delta: não se aplica
+Repetição 1: 0.455254 s
+Repetição 2: 0.454979 s
+Repetição 3: 0.458064 s
+Tempo médio: 0.456099000 s
+
+----------------------------------------
+Versão: qsort sequencial
+Processos: 1
+Nós utilizados: 1
+Delta: não se aplica
+Repetição 1: 0.001522 s
+Repetição 2: 0.001174 s
+Repetição 3: 0.001038 s
+Tempo médio: 0.001244667 s
+Medições concluídas.

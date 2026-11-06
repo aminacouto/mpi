@@ -1,8 +1,9 @@
+// Versão com Bubble Sort sequencial.
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define ARRAY_SIZE 20000
+#define ARRAY_SIZE 100000
 
 // Bubble Sort 
 void bs(int n, int *vetor)

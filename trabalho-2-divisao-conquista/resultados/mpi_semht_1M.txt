@@ -1,0 +1,16 @@
+Experimento: semht
+Processos MPI: 31
+Vetor: 1000000
+Delta: 62500
+Nós: atlantica[03-04]
+Repetição 1
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 58.861588 segundos
+Repetição 2
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 61.062590 segundos
+Repetição 3
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 60.643629 segundos
+TEMPO MÉDIO: 60.189269 s
+Medições concluídas.

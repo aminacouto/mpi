@@ -1,0 +1,23 @@
+Experimento: qs
+Elementos: 1000000
+Delta: não se aplica
+Processos MPI: 1
+Nós: 1
+Repetições: 3
+Job ID: 41173
+Otimização: -O2
+atlantica03
+--- Repetição 1 ---
+Elementos: 1000000
+Tempo da ordenação sequencial (qsort): 0.068194 segundos
+Tempo da repetição 1: 0.068194 s
+--- Repetição 2 ---
+Elementos: 1000000
+Tempo da ordenação sequencial (qsort): 0.069011 segundos
+Tempo da repetição 2: 0.069011 s
+--- Repetição 3 ---
+Elementos: 1000000
+Tempo da ordenação sequencial (qsort): 0.069933 segundos
+Tempo da repetição 3: 0.069933 s
+TEMPO MÉDIO: 0.069046000 s
+Arquivo: resultados/qs_1M_41173.txt

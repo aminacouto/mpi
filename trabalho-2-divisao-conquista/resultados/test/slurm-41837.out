@@ -1,0 +1,16 @@
+========================================
+RESULTADOS DAS MEDIÇÕES — TPP2
+========================================
+Elementos: 10000
+Repetições: 1
+Data e hora: 02/11/2026 17:23:53
+
+----------------------------------------
+Versão: MPI — Bubble Sort com balanceamento
+Processos: 32
+Nós utilizados: 2
+Delta: não se aplica
+HT: não utilizado
+Repetição 1: 0.093944 s
+Tempo médio: 0.093944000 s
+Medições concluídas.

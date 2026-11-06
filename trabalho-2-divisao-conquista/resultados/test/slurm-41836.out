@@ -1,0 +1,16 @@
+========================================
+RESULTADOS DAS MEDIÇÕES — TPP2
+========================================
+Elementos: 10000
+Repetições: 1
+Data e hora: 02/11/2026 17:20:27
+
+----------------------------------------
+Versão: MPI — Bubble Sort com balanceamento
+Processos: 32
+Nós utilizados: 2
+Delta: não se aplica
+HT: não utilizado
+srun: error: Unable to create step for job 41836: Requested node configuration is not available
+ERRO: execução interrompida.
+ERRO na linha 154. Medições incompletas; não considerar tempos ausentes como zero.

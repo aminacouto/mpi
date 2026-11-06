@@ -1,0 +1,16 @@
+Experimento: comht
+Processos MPI: 31
+Vetor: 1000000
+Delta: 62500
+Nós: atlantica[05-06]
+Repetição 1
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 40.385470 segundos
+Repetição 2
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 39.260481 segundos
+Repetição 3
+Ordenação concluída: 1000000 elementos.
+Tempo da ordenação paralela: 40.493236 segundos
+TEMPO MÉDIO: 40.046396 s
+Medições concluídas.

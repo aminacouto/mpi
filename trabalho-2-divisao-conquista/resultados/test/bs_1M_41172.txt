@@ -1,0 +1,10 @@
+Experimento: bs
+Elementos: 1000000
+Delta: não se aplica
+Processos MPI: 1
+Nós: 1
+Repetições: 3
+Job ID: 41172
+Otimização: -O2
+atlantica01
+--- Repetição 1 ---

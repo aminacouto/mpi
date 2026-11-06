@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/LADAPPs/OpenMPI/openmpi-4.1.1/include",
+                "/LADAPPs/OpenMPI/openmpi-4.1.1/include/openmpi",
+                "/LADAPPs/OpenMPI/openmpi-4.1.1/include/openmpi/opal/mca/event/libevent2022/libevent",
+                "/LADAPPs/OpenMPI/openmpi-4.1.1/include/openmpi/opal/mca/event/libevent2022/libevent/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

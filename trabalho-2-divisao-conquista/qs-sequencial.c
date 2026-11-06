@@ -1,8 +1,9 @@
+// Versao sequencial com Quick Sort.
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define ARRAY_SIZE 20000
+#define ARRAY_SIZE 100000
 
 // Comparação para o qsort
 int comparar(const void *a, const void *b)
